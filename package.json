@@ -1,0 +1,33 @@
+{
+  "name": "vue-memory-card",
+  "version": "1.0.0",
+  "description": "pokemon memory game",
+  "main": "index.js",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@vue/cli-plugin-babel": "4.1.1",
+    "cards": "1.2.0",
+    "lodash": "4.17.21",
+    "vue": "^2.6.11",
+    "vue-class-component": "7.2.6",
+    "vue-property-decorator": "9.1.2"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "4.1.1",
+    "vue-template-compiler": "^2.6.11",
+    "vue-class-component": "^7.2.6",
+    "vue-property-decorator": "^9.0.0",
+    "typescript": "3.9.7",
+    "@vue/cli-plugin-typescript": "^3.12.1",
+    "@types/lodash": "^4.14.168"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Giusyrobbie/vue-memory-card.git"
+  },
+  "author": "Giusy Napolitano",
+  "license": "ISC"
+}

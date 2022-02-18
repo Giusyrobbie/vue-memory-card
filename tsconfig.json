@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "esnext",
+    "target": "es2015",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "noEmitOnError": true
+  }
+}
