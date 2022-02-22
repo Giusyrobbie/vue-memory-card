@@ -1,11 +1,20 @@
 <template>
-  <div class="Card" @click="flipCard(id)">
-    <div class="Card__front" v-if="visible">
-      <span>{{ name }}</span>
-      <span>{{ id }}</span>
+  <div class="Card" @click="flipCard(id)" :class="isMatchedClass">
+    <div  class="Card__front" v-if="visible">
+      <img
+          ref="cardSelected"
+          class="Card__image"
+          :src="require(`../assets/${name}.png`)"
+          :alt="name"
+      />
     </div>
-    <div class="Card_back" else>Top</div>
+
+    <div class="Card__back" v-else>
+      <img  src="../assets/pokeball.png">
+    </div>
+
   </div>
+
 </template>
 
 <script lang='ts'>
@@ -18,32 +27,54 @@ export default class Card extends Vue {
   @Prop({ type: Number, required: true }) id: number;
   @Prop({ type: Boolean, required: true, default: false }) matched: boolean;
 
-  getClassMap() {
+  get isMatchedClass() {
     return {
-      ["Card__imgTop"]: this.visible,
-      ["Card__imgBottom"]: !this.visible,
+      ["Card--matched"]: this.matched,
     };
   }
 
-  public flipCard(value) {
-    this.$emit("click-card", value);
+  public flipCard(id: number) {
+    this.$emit("click-card", id);
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="css">
+<style scoped lang="scss">
 .Card {
-  border-style: solid;
-  width: 70px;
-  height: 90px;
+  height: 100px;
+  width: 100px;
+  margin: 0 auto;
+  border-radius: 15px;
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #165b8b;
+  cursor: pointer;
+
+  &.Card--matched {
+    opacity: 0.3;
+    pointer-events: none;
+    cursor: none;
+    transition-duration: 0.5s;
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+  }
+
+  &__back {
+    img {
+      height: 50px;
+    }
+  }
 }
 
-.Card__imgTop {
-  img: "";
-}
 
-div:active {
-  background-color: yellow;
-}
+
+
+
+
 </style>
