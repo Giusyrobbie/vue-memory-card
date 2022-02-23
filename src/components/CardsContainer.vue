@@ -1,7 +1,7 @@
 <template>
   <div class="CardContainer" :class="disabledClass()">
     <div class="CardContainer__text">Matches found: {{matchesFound}}</div>
-    <div class="CardContainer__message" v-if="matchesFound == 8">Congratulation!!!!</div>
+    <div class="CardContainer__message" v-if="matchesFound == 8">Great!!!!</div>
 
     <div class="CardContainer__wrapper">
       <div v-for="(card, index) in cardList" :key="index" >
@@ -35,7 +35,7 @@ import {PokemonApiService} from "../services/pokemon.api.service";
 })
 
 
-export default class CardContainer extends Vue {
+export default class CardsContainer extends Vue {
 
   public service = new PokemonApiService();
 

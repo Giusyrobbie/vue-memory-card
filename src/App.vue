@@ -1,17 +1,18 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png" alt="logo">
-    <CardContainer></CardContainer>
+    <CardsContainer></CardsContainer>
+
   </div>
 </template>
 
 <script lang='ts'>
 import { Component, Vue } from "vue-property-decorator";
-import CardContainer from "./components/CardContainer.vue";
+import CardsContainer from "./components/CardsContainer.vue";
 
 @Component({
   components: {
-    CardContainer,
+    CardsContainer,
   },
 })
 export default class App extends Vue {}
