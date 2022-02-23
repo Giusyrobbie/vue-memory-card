@@ -4,7 +4,7 @@
       <img
           ref="cardSelected"
           class="Card__image"
-          :src="require(`../assets/${name}.png`)"
+          :src="url"
           :alt="name"
       />
     </div>
@@ -26,6 +26,7 @@ export default class Card extends Vue {
   @Prop({ type: Boolean, required: true, default: false }) visible: boolean;
   @Prop({ type: Number, required: true }) id: number;
   @Prop({ type: Boolean, required: true, default: false }) matched: boolean;
+  @Prop({ type: String, required: true }) url: string;
 
   get isMatchedClass() {
     return {
@@ -65,7 +66,12 @@ export default class Card extends Vue {
     height: 80px;
   }
 
+  &__front {
+    transform: rotateY(180deg);
+  }
+
   &__back {
+    transform: rotateY(180deg);
     img {
       height: 50px;
     }
