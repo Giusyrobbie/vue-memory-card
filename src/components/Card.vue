@@ -1,18 +1,18 @@
 <template>
   <div class="Card" @click="flipCard(id)" :class="isMatchedClass">
-    <div  class="Card__front" v-if="visible">
-      <img
-          ref="cardSelected"
-          class="Card__image"
-          :src="url"
-          :alt="name"
-      />
+    <div class="Card__content">
+      <div  class="Card__front" v-if="visible">
+        <img
+            ref="cardSelected"
+            class="Card__image"
+            :src="url"
+            :alt="name"
+        />
+      </div>
+      <div class="Card__back" v-else>
+        <img  src="../assets/pokeball.png">
+      </div>
     </div>
-
-    <div class="Card__back" v-else>
-      <img  src="../assets/pokeball.png">
-    </div>
-
   </div>
 
 </template>
@@ -31,6 +31,7 @@ export default class Card extends Vue {
   get isMatchedClass() {
     return {
       ["Card--matched"]: this.matched,
+      ["Card--isFlipped"]: this.visible,
     };
   }
 
@@ -46,13 +47,26 @@ export default class Card extends Vue {
   height: 100px;
   width: 100px;
   margin: 0 auto;
-  border-radius: 15px;
-  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #165b8b;
-  cursor: pointer;
+  position: relative;
+  transition: 0.5s transform ease-in;
+  transform-style: preserve-3d;
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #165b8b;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    box-shadow: 0 15px 60px rgba(0, 0, 0, 0.5);
+  }
+
+  &--isFlipped {
+    transform: rotateY( 180deg ) ;
+    transition: transform 0.5s;
+  }
 
   &.Card--matched {
     opacity: 0.3;
@@ -67,17 +81,24 @@ export default class Card extends Vue {
   }
 
   &__front {
-    transform: rotateY(180deg);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+
   }
 
   &__back {
-    transform: rotateY(180deg);
+    text-align: center;
+    backface-visibility: hidden;
     img {
       height: 50px;
+      width: 50px;
     }
   }
 }
-
 
 
 
